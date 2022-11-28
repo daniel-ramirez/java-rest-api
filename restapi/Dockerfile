@@ -1,6 +1,6 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
 LABEL maintainer="danielfr1987@gmail.com"
 WORKDIR /opt/restapi
-RUN ./mvnw clean package
+RUN chmod a+x ./mvnw && ./mvnw clean install
 COPY target/restapi-0.0.1-SNAPSHOT.jar /myapp/my-app.jar
 ENTRYPOINT ["java","-jar","my-app.jar"]
