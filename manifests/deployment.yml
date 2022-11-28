@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: danielramirezjavarestapi 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: danielramirezjavarestapi
+  template:
+    metadata:
+      labels:
+        app: danielramirezjavarestapi 
+    spec:
+      containers:
+        - name: danielramirezjavarestapi 
+          image: firsttest1.azurecr.io/danielramirezjavarestapi
+          ports:
+          - containerPort: 80
