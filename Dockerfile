@@ -1,5 +1,5 @@
 # Maven 
-FROM maven:3.8.1-openjdk-11-slim AS builder
+FROM maven:3-jdk-11
 WORKDIR /app
 
 COPY pom.xml .
@@ -8,7 +8,7 @@ COPY src ./src
 RUN mvn clean -e -B package
 
 # RTSDK Java
-FROM openjdk:11-jre-slim-buster
+FROM openjdk:11-jdk
 LABEL maintainer="danielfr1987@gmail.com"
 WORKDIR /app
 COPY --from=builder /app/target/restapi-0.0.1-SNAPSHOT.jar .
