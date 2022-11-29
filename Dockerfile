@@ -41,9 +41,11 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
+RUN mkdir /opt/restapi
 WORKDIR /opt/restapi
-
 COPY . /opt/restapi/
+
+RUN ls -al /opt/restapi
 
 RUN mvn clean package
 
