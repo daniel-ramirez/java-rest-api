@@ -9,6 +9,11 @@
 FROM openjdk:11-jdk
 LABEL maintainer="danielfr1987@gmail.com"
 
+RUN mkdir /opt/restapi
+WORKDIR /opt/restapi
+COPY . /opt/restapi/
+
+
 # Downloading and installing Maven
 # 1- Define a constant with the version of maven you want to install
 ARG MAVEN_VERSION=3.6.1         
@@ -40,10 +45,6 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 # 6- Define environmental variables required by Maven, like Maven_Home directory and where the maven repo is located
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
-
-RUN mkdir /opt/restapi
-WORKDIR /opt/restapi
-COPY . /opt/restapi/
 
 RUN ls -al /opt/restapi
 
