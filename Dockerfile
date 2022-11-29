@@ -3,7 +3,7 @@ FROM maven:3-jdk-11
 RUN mkdir /app
 WORKDIR /app
 COPY . /app
-RUN mvn clean package
+RUN ./mvnw clean package
 
 # RTSDK Java
 FROM openjdk:11-jdk
