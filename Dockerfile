@@ -8,7 +8,7 @@ COPY src ./src
 RUN mvn clean -e -B package
 
 # RTSDK Java
-FROM adoptopenjdk/openjdk11:alpine-jre
+FROM openjdk:11-jre-slim-buster
 LABEL maintainer="danielfr1987@gmail.com"
 WORKDIR /app
 COPY --from=builder /app/target/restapi-0.0.1-SNAPSHOT.jar .
